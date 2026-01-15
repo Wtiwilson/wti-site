@@ -17,7 +17,7 @@
   --accent:#25D366;
   --accentText:#052e16;
   --shadow:0 20px 50px rgba(0,0,0,.45);
-  --radius:22px;
+  --radius:26px;
 }
 
 *{box-sizing:border-box}
@@ -33,7 +33,7 @@ body{
 }
 
 a{text-decoration:none;color:inherit}
-.wrap{max-width:1240px;margin:0 auto;padding:28px}
+.wrap{max-width:1320px;margin:0 auto;padding:32px}
 
 /* HEADER */
 .top{
@@ -43,23 +43,23 @@ a{text-decoration:none;color:inherit}
   border-bottom:1px solid var(--line);
 }
 .top .inner{
-  max-width:1240px;margin:0 auto;
-  padding:14px 28px;
+  max-width:1320px;margin:0 auto;
+  padding:14px 32px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .brand a{display:flex;align-items:center}
-.brand img{height:80px}
+.brand img{height:82px}
 
-.nav{display:flex;gap:18px;flex-wrap:wrap}
+.nav{display:flex;gap:20px}
 .nav a{
-  font-size:13px;font-weight:700;color:var(--muted);
-  padding:8px 10px;border-radius:10px;
+  font-size:14px;font-weight:700;color:var(--muted);
+  padding:8px 12px;border-radius:12px;
 }
 .nav a:hover{background:#111c2b;color:#fff}
 
 .btn{
   display:inline-flex;align-items:center;gap:10px;
-  padding:12px 18px;border-radius:16px;
+  padding:14px 22px;border-radius:18px;
   font-weight:800;border:1px solid transparent;
 }
 .btn.primary{background:var(--accent);color:var(--accentText)}
@@ -67,95 +67,91 @@ a{text-decoration:none;color:inherit}
 
 /* HERO */
 .hero{
-  margin-top:34px;
-  padding:80px 44px;
-  border-radius:36px;
+  margin-top:36px;
+  padding:88px 54px;
+  border-radius:40px;
   background:
     linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
     url("assets/hero-wti.jpg") center/cover no-repeat;
   box-shadow:var(--shadow);
-  animation:heroIn .7s ease-out both;
-}
-@keyframes heroIn{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
 }
 .hero h1{
-  font-size:48px;line-height:1.05;
-  max-width:960px;margin:0 0 18px;
+  font-size:52px;line-height:1.05;
+  max-width:980px;margin:0 0 20px;
 }
 .hero p{
-  max-width:820px;font-size:18px;
+  max-width:860px;font-size:19px;
   color:var(--muted);line-height:1.6;
 }
-.heroActions{margin-top:28px;display:flex;gap:16px;flex-wrap:wrap}
+.heroActions{margin-top:32px;display:flex;gap:18px}
 
 /* SECTIONS */
-section{margin-top:72px}
-h2{font-size:28px;margin-bottom:10px}
-.sectionDesc{color:var(--muted);max-width:820px;font-size:15px}
+section{margin-top:96px}
+h2{font-size:32px;margin-bottom:14px}
+.sectionDesc{color:var(--muted);max-width:900px;font-size:16px}
 
-/* GRID ASSIMÉTRICO REAL */
-.grid{
-  margin-top:28px;
+/* LINHAS DE SOLUÇÕES — GRID GRANDE */
+.solutions{
+  margin-top:48px;
   display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:26px;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
 }
-.card{
-  grid-column:span 4;
-  background:linear-gradient(180deg,rgba(18,26,40,.9),rgba(10,16,26,.9));
+.solution{
+  background:linear-gradient(180deg,rgba(18,26,40,.95),rgba(10,16,26,.95));
   border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:26px;
+  border-radius:36px;
+  padding:36px;
   box-shadow:var(--shadow);
-  transition:.3s;
-  position:relative;
+  transition:.35s;
 }
-.card:hover{
-  transform:translateY(-10px) scale(1.02);
+.solution:hover{
+  transform:translateY(-10px);
   border-color:rgba(37,211,102,.45);
 }
-
-/* ASSIMETRIA DE VERDADE */
-.card.offset-up{transform:translateY(-30px)}
-.card.offset-down{transform:translateY(22px)}
-.card.wide{grid-column:span 5}
-.card.tall{padding-bottom:44px}
-
-.card img{
+.solution img{
   width:100%;
-  height:200px;
+  height:320px;
   object-fit:cover;
-  border-radius:16px;
-  margin-bottom:16px;
-  background:#111;
+  border-radius:26px;
+  margin-bottom:24px;
 }
+.solution h3{font-size:26px;margin:0 0 12px}
+.solution p{color:var(--muted);font-size:16px;line-height:1.6}
+.solution ul{margin-top:18px;padding-left:20px;color:var(--muted)}
+.solution li{margin:8px 0}
 
-.card h3{margin:0 0 10px;font-size:18px}
-.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
-
-.bullet{margin-top:14px;padding-left:18px;color:var(--muted);font-size:13px}
-.bullet li{margin:6px 0}
+/* SOLUÇÃO CENTRAL MAIOR */
+.solution.full{
+  grid-column:1 / -1;
+}
 
 /* CONTATO */
 .contact{
-  margin-top:90px;
-  padding:44px;
-  border-radius:36px;
-  background:linear-gradient(135deg,rgba(37,211,102,.14),rgba(0,120,255,.12));
+  margin-top:120px;
+  padding:56px;
+  border-radius:44px;
+  background:linear-gradient(135deg,rgba(37,211,102,.16),rgba(0,120,255,.14));
   display:flex;justify-content:space-between;align-items:center;
-  gap:26px;flex-wrap:wrap;
+  gap:32px;
 }
-.contact h3{margin:0 0 10px;font-size:24px}
+.contact h3{font-size:28px;margin:0 0 12px}
 
-/* WHATSAPP FLOAT */
+/* WHATSAPP FLOAT — GRANDE */
 .waFloat{
-  position:fixed;right:22px;bottom:22px;z-index:200;
-  width:62px;height:62px;border-radius:50%;
+  position:fixed;
+  right:26px;
+  bottom:26px;
+  z-index:300;
   background:var(--accent);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  color:var(--accentText);
+  border-radius:50px;
+  padding:18px 26px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-weight:900;
+  box-shadow:0 24px 50px rgba(0,0,0,.55);
   animation:pulse 2.8s ease-in-out infinite;
 }
 @keyframes pulse{
@@ -166,23 +162,21 @@ h2{font-size:28px;margin-bottom:10px}
 
 /* FOOTER */
 footer{
-  margin:60px 0 24px;
-  text-align:center;font-size:12px;color:var(--muted);
+  margin:80px 0 28px;
+  text-align:center;font-size:13px;color:var(--muted);
 }
 
 /* MOBILE */
 @media(max-width:1024px){
-  .grid{grid-template-columns:1fr}
-  .card,.card.wide{grid-column:1}
-  .card.offset-up,.card.offset-down{transform:none}
-  .hero h1{font-size:34px}
+  .solutions{grid-template-columns:1fr}
+  .solution.full{grid-column:auto}
+  .hero h1{font-size:36px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="top">
   <div class="inner">
     <div class="brand">
@@ -193,9 +187,6 @@ footer{
 
     <nav class="nav">
       <a href="#solucoes">Soluções</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#infra">Infraestrutura</a>
-      <a href="#email">E-mail</a>
       <a href="#contato">Contato</a>
     </nav>
 
@@ -209,7 +200,6 @@ footer{
 
 <main class="wrap">
 
-<!-- HERO -->
 <section class="hero">
   <h1>Tecnologia, infraestrutura e suprimentos para empresas que não podem parar.</h1>
   <p>
@@ -217,41 +207,43 @@ footer{
     com foco em indústrias alimentícias, distribuidores e pequenos negócios.
   </p>
   <div class="heroActions">
-    <a class="btn primary" href="https://wa.me/559484450738" target="_blank">Solicitar cotação</a>
+    <a class="btn primary" href="https://wa.me/559484450738">Solicitar cotação</a>
     <a class="btn ghost" href="#solucoes">Ver soluções</a>
   </div>
 </section>
 
-<!-- SOLUÇÕES -->
 <section id="solucoes">
   <h2>Linhas de Soluções</h2>
   <p class="sectionDesc">Fornecimento, implantação e suporte técnico especializado.</p>
 
-  <div class="grid">
-    <div class="card wide offset-up">
-      <img src="assets/linha-informatica-industrial.jpg" onerror="this.style.display='none'">
+  <div class="solutions">
+    <div class="solution">
+      <img src="assets/linha-informatica-industrial.jpg">
       <h3>Informática Industrial</h3>
-      <ul class="bullet">
-        <li>Suprimentos e peças industriais</li>
+      <p>Suprimentos e equipamentos para ambientes produtivos.</p>
+      <ul>
         <li>Impressoras térmicas e componentes</li>
-        <li>Computação para ambiente produtivo</li>
+        <li>Peças e suprimentos industriais</li>
+        <li>Computação para operação contínua</li>
       </ul>
     </div>
 
-    <div class="card offset-down">
-      <img src="assets/linha-seguranca.jpg" onerror="this.style.display='none'">
+    <div class="solution">
+      <img src="assets/linha-seguranca.jpg">
       <h3>Segurança</h3>
-      <ul class="bullet">
-        <li>CFTV, alarmes e controle de acesso</li>
-        <li>Cercas elétricas e monitoramento</li>
+      <p>Proteção, monitoramento e controle de acesso.</p>
+      <ul>
+        <li>CFTV, alarmes e cercas elétricas</li>
+        <li>Controle de acesso</li>
         <li>Implantação e suporte</li>
       </ul>
     </div>
 
-    <div class="card tall">
-      <img src="assets/linha-infraestrutura.jpg" onerror="this.style.display='none'">
+    <div class="solution full">
+      <img src="assets/linha-infraestrutura.jpg">
       <h3>Infraestrutura</h3>
-      <ul class="bullet">
+      <p>Redes robustas e conectividade estável.</p>
+      <ul>
         <li>Switches, Wi-Fi e fibra óptica</li>
         <li>Redes corporativas e industriais</li>
         <li>Projetos e execução</li>
@@ -260,15 +252,12 @@ footer{
   </div>
 </section>
 
-<!-- CONTATO -->
 <section id="contato" class="contact">
   <div>
     <h3>Vamos conversar?</h3>
     <p>Explique seu cenário e retornamos com a solução certa.</p>
   </div>
-  <a class="btn primary" href="https://wa.me/559484450738" target="_blank">
-    Falar no WhatsApp
-  </a>
+  <a class="btn primary" href="https://wa.me/559484450738">Falar no WhatsApp</a>
 </section>
 
 <footer>
@@ -277,9 +266,9 @@ footer{
 
 </main>
 
-<!-- WHATS FLOAT -->
 <a class="waFloat" href="https://wa.me/559484450738" target="_blank">
-  <img src="assets/whatsapp-icon.svg" alt="WhatsApp">
+  <img src="assets/whatsapp-icon.svg">
+  WhatsApp
 </a>
 
 <script>
