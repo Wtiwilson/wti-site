@@ -1,166 +1,183 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WTi — Soluções em TI, Infraestrutura e Suprimentos</title>
-  <meta name="description" content="WTi — Serviços de TI, infraestrutura, segurança, suprimentos de informática industrial e fornecimento de soluções para empresas." />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WTi — Soluções em TI, Infraestrutura e Suprimentos</title>
 
-  <link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 
-  <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#0f1620;
-      --line:#1e2a3a;
-      --text:#e8eef6;
-      --muted:#a8b2c2;
-      --accent:#25D366;
-      --accentText:#052e16;
-      --shadow:0 18px 45px rgba(0,0,0,.35);
-      --radius:18px;
-    }
+<style>
+:root{
+  --bg:#0b0f14;
+  --panel:#0f1620;
+  --line:#1e2a3a;
+  --text:#e8eef6;
+  --muted:#9fb0c8;
+  --accent:#25D366;
+  --accentText:#052e16;
+  --shadow:0 20px 50px rgba(0,0,0,.45);
+  --radius:22px;
+}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(37,211,102,.12), transparent 60%),
+    radial-gradient(800px 600px at 85% 20%, rgba(0,120,255,.10), transparent 55%),
+    var(--bg);
+  color:var(--text);
+}
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1200px;margin:0 auto;padding:22px}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:28px}
 
-    /* Header */
-    .top{
-      position:sticky;top:0;z-index:50;
-      background:rgba(11,15,20,.92);
-      border-bottom:1px solid var(--line);
-      backdrop-filter:blur(8px);
-    }
-    .top .inner{
-      max-width:1200px;margin:0 auto;
-      padding:14px 22px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-    }
-    .brand img{height:78px}
+/* HEADER */
+.top{
+  position:sticky;top:0;z-index:100;
+  background:rgba(11,15,20,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.top .inner{
+  max-width:1240px;margin:0 auto;
+  padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand a{display:flex;align-items:center}
+.brand img{height:80px}
 
-    .nav{display:flex;gap:14px;flex-wrap:wrap}
-    .nav a{
-      font-size:13px;font-weight:700;color:var(--muted);
-      padding:8px 10px;border-radius:10px;
-    }
-    .nav a:hover{color:var(--text);background:#111822}
+.nav{display:flex;gap:18px;flex-wrap:wrap}
+.nav a{
+  font-size:13px;font-weight:700;color:var(--muted);
+  padding:8px 10px;border-radius:10px;
+}
+.nav a:hover{background:#111c2b;color:#fff}
 
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 16px;border-radius:14px;
-      font-weight:800;border:1px solid transparent;
-    }
-    .btn.primary{background:var(--accent);color:var(--accentText)}
-    .btn.ghost{border-color:var(--line);color:var(--text)}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 18px;border-radius:16px;
+  font-weight:800;border:1px solid transparent;
+}
+.btn.primary{background:var(--accent);color:var(--accentText)}
+.btn.ghost{border-color:var(--line);color:#fff}
 
-    /* Hero */
-    .hero{
-      margin-top:26px;
-      padding:70px 36px;
-      border-radius:30px;
-      background:
-        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-        url("assets/hero-wti.jpg") center/cover no-repeat;
-      box-shadow:var(--shadow);
-      animation:heroIn .6s ease-out both;
-    }
-    @keyframes heroIn{
-      from{opacity:0;transform:translateY(14px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-    .hero h1{
-      font-size:46px;line-height:1.05;
-      max-width:900px;margin:0 0 16px;
-    }
-    .hero p{
-      max-width:780px;font-size:17px;
-      color:var(--muted);line-height:1.6;
-    }
-    .heroActions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+/* HERO */
+.hero{
+  margin-top:34px;
+  padding:80px 44px;
+  border-radius:36px;
+  background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url("assets/hero-wti.jpg") center/cover no-repeat;
+  box-shadow:var(--shadow);
+  animation:heroIn .7s ease-out both;
+}
+@keyframes heroIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero h1{
+  font-size:48px;line-height:1.05;
+  max-width:960px;margin:0 0 18px;
+}
+.hero p{
+  max-width:820px;font-size:18px;
+  color:var(--muted);line-height:1.6;
+}
+.heroActions{margin-top:28px;display:flex;gap:16px;flex-wrap:wrap}
 
-    /* Sections */
-    section{margin-top:56px}
-    h2{font-size:26px;margin-bottom:8px}
-    .sectionDesc{color:var(--muted);max-width:760px;font-size:14px}
+/* SECTIONS */
+section{margin-top:72px}
+h2{font-size:28px;margin-bottom:10px}
+.sectionDesc{color:var(--muted);max-width:820px;font-size:15px}
 
-    /* Grid + Assimetria */
-    .grid{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:20px;
-      transition:transform .25s ease, border-color .25s ease;
-    }
+/* GRID ASSIMÉTRICO REAL */
+.grid{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:26px;
+}
+.card{
+  grid-column:span 4;
+  background:linear-gradient(180deg,rgba(18,26,40,.9),rgba(10,16,26,.9));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px;
+  box-shadow:var(--shadow);
+  transition:.3s;
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:rgba(37,211,102,.45);
+}
 
-    /* Assimetria proposital */
-    .grid .card:nth-child(3n+1){transform:translateY(-12px)}
-    .grid .card:nth-child(3n+2){transform:translateY(10px)}
-    .grid .card:nth-child(3n){transform:translateY(-4px)}
+/* ASSIMETRIA DE VERDADE */
+.card.offset-up{transform:translateY(-30px)}
+.card.offset-down{transform:translateY(22px)}
+.card.wide{grid-column:span 5}
+.card.tall{padding-bottom:44px}
 
-    .card:hover{
-      transform:translateY(-8px) scale(1.015);
-      border-color:rgba(37,211,102,.4);
-    }
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:16px;
+  background:#111;
+}
 
-    .card h3{margin:0 0 8px;font-size:17px}
-    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.card h3{margin:0 0 10px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
 
-    .bullet{margin-top:12px;padding-left:18px;color:var(--muted);font-size:13px}
-    .bullet li{margin:6px 0}
+.bullet{margin-top:14px;padding-left:18px;color:var(--muted);font-size:13px}
+.bullet li{margin:6px 0}
 
-    /* Reveal */
-    .reveal{opacity:0;transform:translateY(14px);transition:.55s}
-    .reveal.show{opacity:1;transform:none}
+/* CONTATO */
+.contact{
+  margin-top:90px;
+  padding:44px;
+  border-radius:36px;
+  background:linear-gradient(135deg,rgba(37,211,102,.14),rgba(0,120,255,.12));
+  display:flex;justify-content:space-between;align-items:center;
+  gap:26px;flex-wrap:wrap;
+}
+.contact h3{margin:0 0 10px;font-size:24px}
 
-    /* Contact */
-    .contact{
-      margin-top:60px;
-      padding:32px;
-      border-radius:28px;
-      background:linear-gradient(135deg,rgba(37,211,102,.12),rgba(60,140,255,.1));
-      display:flex;justify-content:space-between;align-items:center;
-      gap:20px;flex-wrap:wrap;
-    }
+/* WHATSAPP FLOAT */
+.waFloat{
+  position:fixed;right:22px;bottom:22px;z-index:200;
+  width:62px;height:62px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  animation:pulse 2.8s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+.waFloat img{width:34px;height:34px}
 
-    footer{
-      margin:44px 0 20px;
-      text-align:center;
-      font-size:12px;color:var(--muted);
-    }
+/* FOOTER */
+footer{
+  margin:60px 0 24px;
+  text-align:center;font-size:12px;color:var(--muted);
+}
 
-    /* WhatsApp flutuante */
-    .waFloat{
-      position:fixed;right:18px;bottom:18px;
-      box-shadow:var(--shadow);
-      animation:pulse 2.6s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-4px)}
-    }
-
-    /* Mobile */
-    @media(max-width:980px){
-      .grid{grid-template-columns:1fr}
-      .grid .card{transform:none}
-      .hero h1{font-size:34px}
-    }
-  </style>
+/* MOBILE */
+@media(max-width:1024px){
+  .grid{grid-template-columns:1fr}
+  .card,.card.wide{grid-column:1}
+  .card.offset-up,.card.offset-down{transform:none}
+  .hero h1{font-size:34px}
+}
+</style>
 </head>
 
 <body>
@@ -169,7 +186,9 @@
 <div class="top">
   <div class="inner">
     <div class="brand">
-      <img src="assets/logo-wti.png" alt="WTi">
+      <a href="#top">
+        <img src="assets/logo-wti.png" alt="WTi">
+      </a>
     </div>
 
     <nav class="nav">
@@ -180,115 +199,76 @@
       <a href="#contato">Contato</a>
     </nav>
 
-    <a class="btn primary" href="https://wa.me/5594984455073" target="_blank">
+    <a class="btn primary" href="https://wa.me/559484450738" target="_blank">
       WhatsApp
     </a>
   </div>
 </div>
 
+<a id="top"></a>
+
 <main class="wrap">
 
 <!-- HERO -->
-<section class="hero reveal">
-  <h1>Tecnologia, infraestrutura e suprimentos para empresas que precisam funcionar.</h1>
+<section class="hero">
+  <h1>Tecnologia, infraestrutura e suprimentos para empresas que não podem parar.</h1>
   <p>
-    Soluções em TI, segurança, infraestrutura de redes e suprimentos de informática
-    industrial, com foco em indústrias alimentícias, distribuidores e pequenos negócios.
+    Soluções em TI, segurança, redes e suprimentos de informática industrial,
+    com foco em indústrias alimentícias, distribuidores e pequenos negócios.
   </p>
   <div class="heroActions">
-    <a class="btn primary" href="https://wa.me/5594984455073" target="_blank">Solicitar cotação</a>
+    <a class="btn primary" href="https://wa.me/559484450738" target="_blank">Solicitar cotação</a>
     <a class="btn ghost" href="#solucoes">Ver soluções</a>
   </div>
 </section>
 
-<!-- LINHAS -->
-<section id="solucoes" class="reveal">
+<!-- SOLUÇÕES -->
+<section id="solucoes">
   <h2>Linhas de Soluções</h2>
-  <p class="sectionDesc">Soluções completas, do fornecimento à implantação.</p>
+  <p class="sectionDesc">Fornecimento, implantação e suporte técnico especializado.</p>
 
   <div class="grid">
-    <div class="card">
-      <img src="assets/linha-informatica-industrial.jpg" style="width:100%;border-radius:14px;margin-bottom:12px">
+    <div class="card wide offset-up">
+      <img src="assets/linha-informatica-industrial.jpg" onerror="this.style.display='none'">
       <h3>Informática Industrial</h3>
       <ul class="bullet">
-        <li>Peças e suprimentos industriais</li>
+        <li>Suprimentos e peças industriais</li>
         <li>Impressoras térmicas e componentes</li>
         <li>Computação para ambiente produtivo</li>
       </ul>
     </div>
 
-    <div class="card">
-      <img src="assets/linha-seguranca.jpg" style="width:100%;border-radius:14px;margin-bottom:12px">
+    <div class="card offset-down">
+      <img src="assets/linha-seguranca.jpg" onerror="this.style.display='none'">
       <h3>Segurança</h3>
       <ul class="bullet">
         <li>CFTV, alarmes e controle de acesso</li>
         <li>Cercas elétricas e monitoramento</li>
-        <li>Projetos e implantação</li>
+        <li>Implantação e suporte</li>
       </ul>
     </div>
 
-    <div class="card">
-      <img src="assets/linha-infraestrutura.jpg" style="width:100%;border-radius:14px;margin-bottom:12px">
+    <div class="card tall">
+      <img src="assets/linha-infraestrutura.jpg" onerror="this.style.display='none'">
       <h3>Infraestrutura</h3>
       <ul class="bullet">
         <li>Switches, Wi-Fi e fibra óptica</li>
         <li>Redes corporativas e industriais</li>
-        <li>Implantação e suporte</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- SERVIÇOS -->
-<section id="servicos" class="reveal">
-  <h2>Serviços de TI</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Suporte & Help Desk</h3>
-      <p>Atendimento remoto e presencial com foco em estabilidade.</p>
-    </div>
-    <div class="card">
-      <h3>Automação & Integrações</h3>
-      <p>Relatórios, robôs e redução de tarefas manuais.</p>
-    </div>
-    <div class="card">
-      <h3>Vendas & Fornecimento</h3>
-      <p>Equipamentos, suprimentos e implantação técnica.</p>
-    </div>
-  </div>
-</section>
-
-<!-- INFRA -->
-<section id="infra" class="reveal">
-  <h2>Infraestrutura, Cabeamento & CFTV</h2>
-  <div class="grid">
-    <div class="card"><h3>Cabeamento Estruturado</h3></div>
-    <div class="card"><h3>Fibra Óptica</h3></div>
-    <div class="card"><h3>CFTV & Segurança</h3></div>
-  </div>
-</section>
-
-<!-- EMAIL -->
-<section id="email" class="reveal">
-  <h2>Hospedagem de E-mail Corporativo</h2>
-  <div class="grid">
-    <div class="card">
-      <ul class="bullet">
-        <li>POP / IMAP</li>
-        <li>Migração de e-mails</li>
-        <li>Webmail e antispam</li>
+        <li>Projetos e execução</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- CONTATO -->
-<section id="contato" class="contact reveal">
+<section id="contato" class="contact">
   <div>
     <h3>Vamos conversar?</h3>
-    <p>Explique seu cenário e retornamos com a melhor solução.</p>
+    <p>Explique seu cenário e retornamos com a solução certa.</p>
   </div>
-  <a class="btn primary" href="https://wa.me/5594984455073" target="_blank">Falar no WhatsApp</a>
+  <a class="btn primary" href="https://wa.me/559484450738" target="_blank">
+    Falar no WhatsApp
+  </a>
 </section>
 
 <footer>
@@ -297,18 +277,13 @@
 
 </main>
 
-<div class="waFloat">
-  <a class="btn primary" href="https://wa.me/5594984455073" target="_blank">WhatsApp</a>
-</div>
+<!-- WHATS FLOAT -->
+<a class="waFloat" href="https://wa.me/559484450738" target="_blank">
+  <img src="assets/whatsapp-icon.svg" alt="WhatsApp">
+</a>
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  const els=document.querySelectorAll(".reveal");
-  const io=new IntersectionObserver(e=>{
-    e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"));
-  },{threshold:.12});
-  els.forEach(el=>io.observe(el));
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 
 </body>
