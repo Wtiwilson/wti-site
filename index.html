@@ -15,9 +15,6 @@
   --text:#e8eef6;
   --muted:#9fb0c8;
   --accent:#25D366;
-  --accentText:#052e16;
-  --shadow:0 22px 55px rgba(0,0,0,.55);
-  --radius:26px;
 }
 
 *{box-sizing:border-box}
@@ -26,7 +23,7 @@ body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   background:
-    radial-gradient(900px 500px at 15% 10%, rgba(37,211,102,.12), transparent 60%),
+    radial-gradient(900px 500px at 15% 10%, rgba(37,211,102,.10), transparent 60%),
     radial-gradient(800px 600px at 85% 20%, rgba(0,120,255,.10), transparent 55%),
     var(--bg);
   color:var(--text);
@@ -45,9 +42,8 @@ a{text-decoration:none;color:inherit}
 .top .inner{
   max-width:1320px;margin:0 auto;
   padding:14px 32px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  display:flex;align-items:center;justify-content:space-between;
 }
-.brand a{display:flex;align-items:center}
 .brand img{height:82px}
 
 .nav{display:flex;gap:20px}
@@ -57,14 +53,6 @@ a{text-decoration:none;color:inherit}
 }
 .nav a:hover{background:#111c2b;color:#fff}
 
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 22px;border-radius:18px;
-  font-weight:800;border:1px solid transparent;
-}
-.btn.primary{background:var(--accent);color:var(--accentText)}
-.btn.ghost{border-color:var(--line);color:#fff}
-
 /* HERO */
 .hero{
   margin-top:36px;
@@ -73,7 +61,6 @@ a{text-decoration:none;color:inherit}
   background:
     linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
     url("assets/hero-wti.jpg") center/cover no-repeat;
-  box-shadow:var(--shadow);
 }
 .hero h1{
   font-size:52px;line-height:1.05;
@@ -83,14 +70,13 @@ a{text-decoration:none;color:inherit}
   max-width:860px;font-size:19px;
   color:var(--muted);line-height:1.6;
 }
-.heroActions{margin-top:32px;display:flex;gap:18px}
 
-/* SECTIONS */
+/* SEÇÕES */
 section{margin-top:96px}
 h2{font-size:32px;margin-bottom:14px}
-.sectionDesc{color:var(--muted);max-width:900px;font-size:16px}
+.sectionDesc{color:var(--muted);max-width:900px}
 
-/* LINHAS DE SOLUÇÕES */
+/* SOLUÇÕES */
 .solutions{
   margin-top:48px;
   display:grid;
@@ -102,12 +88,6 @@ h2{font-size:32px;margin-bottom:14px}
   border:1px solid var(--line);
   border-radius:36px;
   padding:36px;
-  box-shadow:var(--shadow);
-  transition:.35s;
-}
-.solution:hover{
-  transform:translateY(-10px);
-  border-color:rgba(37,211,102,.45);
 }
 .solution img{
   width:100%;
@@ -116,9 +96,8 @@ h2{font-size:32px;margin-bottom:14px}
   border-radius:26px;
   margin-bottom:24px;
 }
-.solution h3{font-size:26px;margin:0 0 12px}
-.solution p{color:var(--muted);font-size:16px;line-height:1.6}
-.solution ul{margin-top:18px;padding-left:20px;color:var(--muted)}
+.solution h3{font-size:26px}
+.solution ul{margin-top:16px;color:var(--muted)}
 .solution li{margin:8px 0}
 .solution.full{grid-column:1 / -1}
 
@@ -129,33 +108,23 @@ h2{font-size:32px;margin-bottom:14px}
   border-radius:44px;
   background:linear-gradient(135deg,rgba(37,211,102,.16),rgba(0,120,255,.14));
   display:flex;justify-content:space-between;align-items:center;
-  gap:32px;
 }
-.contact h3{font-size:28px;margin:0 0 12px}
 
-/* WHATSAPP FLOAT — ÍCONE GRANDE */
+/* WHATSAPP — SOMENTE SVG, GRANDE */
 .waFloat{
   position:fixed;
-  right:24px;
-  bottom:24px;
+  right:18px;
+  bottom:18px;
   z-index:999;
-  width:82px;
-  height:82px;
-  border-radius:50%;
-  background:var(--accent);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 28px 60px rgba(0,0,0,.6);
-  animation:pulse 2.6s ease-in-out infinite;
-}
-@keyframes pulse{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
 }
 .waFloat img{
-  width:44px;
-  height:44px;
+  width:96px;   /* TAMANHO GRANDE */
+  height:96px;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.6));
+  transition:.25s;
+}
+.waFloat img:hover{
+  transform:scale(1.12);
 }
 
 /* FOOTER */
@@ -169,6 +138,7 @@ footer{
   .solutions{grid-template-columns:1fr}
   .solution.full{grid-column:auto}
   .hero h1{font-size:36px}
+  .waFloat img{width:84px;height:84px}
 }
 </style>
 </head>
@@ -177,20 +147,14 @@ footer{
 
 <div class="top">
   <div class="inner">
-    <div class="brand">
-      <a href="#top">
-        <img src="assets/logo-wti.png" alt="WTi">
-      </a>
-    </div>
+    <a href="#top" class="brand">
+      <img src="assets/logo-wti.png" alt="WTi">
+    </a>
 
     <nav class="nav">
       <a href="#solucoes">Soluções</a>
       <a href="#contato">Contato</a>
     </nav>
-
-    <a class="btn primary" href="https://wa.me/559484450738" target="_blank">
-      WhatsApp
-    </a>
   </div>
 </div>
 
@@ -204,10 +168,6 @@ footer{
     Soluções em TI, segurança, redes e suprimentos de informática industrial,
     com foco em indústrias alimentícias, distribuidores e pequenos negócios.
   </p>
-  <div class="heroActions">
-    <a class="btn primary" href="https://wa.me/559484450738">Solicitar cotação</a>
-    <a class="btn ghost" href="#solucoes">Ver soluções</a>
-  </div>
 </section>
 
 <section id="solucoes">
@@ -220,8 +180,8 @@ footer{
       <h3>Informática Industrial</h3>
       <ul>
         <li>Impressoras térmicas e componentes</li>
-        <li>Peças e suprimentos industriais</li>
-        <li>Computação para operação contínua</li>
+        <li>Suprimentos industriais</li>
+        <li>Operação contínua</li>
       </ul>
     </div>
 
@@ -229,7 +189,7 @@ footer{
       <img src="assets/linha-seguranca.jpg">
       <h3>Segurança</h3>
       <ul>
-        <li>CFTV, alarmes e cercas elétricas</li>
+        <li>CFTV e alarmes</li>
         <li>Controle de acesso</li>
         <li>Implantação e suporte</li>
       </ul>
@@ -240,7 +200,7 @@ footer{
       <h3>Infraestrutura</h3>
       <ul>
         <li>Switches, Wi-Fi e fibra óptica</li>
-        <li>Redes corporativas e industriais</li>
+        <li>Redes industriais</li>
         <li>Projetos e execução</li>
       </ul>
     </div>
@@ -252,7 +212,6 @@ footer{
     <h3>Vamos conversar?</h3>
     <p>Explique seu cenário e retornamos com a solução certa.</p>
   </div>
-  <a class="btn primary" href="https://wa.me/559484450738">Falar no WhatsApp</a>
 </section>
 
 <footer>
@@ -261,7 +220,7 @@ footer{
 
 </main>
 
-<!-- WHATSAPP FLOAT — SÓ SVG -->
+<!-- WHATSAPP — APENAS SVG -->
 <a class="waFloat" href="https://wa.me/559484450738" target="_blank" aria-label="WhatsApp">
   <img src="assets/whatsapp-icon.svg" alt="WhatsApp">
 </a>
