@@ -14,7 +14,6 @@
   --line:#1e2a3a;
   --text:#e8eef6;
   --muted:#9fb0c8;
-  --accent:#25D366;
 }
 
 *{box-sizing:border-box}
@@ -110,7 +109,7 @@ h2{font-size:32px;margin-bottom:14px}
   display:flex;justify-content:space-between;align-items:center;
 }
 
-/* WHATSAPP — SOMENTE SVG, GRANDE */
+/* WHATSAPP — SÓ SVG, BEM GRANDE */
 .waFloat{
   position:fixed;
   right:18px;
@@ -118,9 +117,9 @@ h2{font-size:32px;margin-bottom:14px}
   z-index:999;
 }
 .waFloat img{
-  width:120px;   /* TAMANHO GRANDE */
+  width:120px;     /* TAMANHO DESKTOP */
   height:120px;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,.6));
+  filter: drop-shadow(0 14px 40px rgba(0,0,0,.65));
   transition:.25s;
 }
 .waFloat img:hover{
@@ -138,7 +137,10 @@ footer{
   .solutions{grid-template-columns:1fr}
   .solution.full{grid-column:auto}
   .hero h1{font-size:36px}
-  .waFloat img{width:84px;height:84px}
+  .waFloat img{
+    width:100px;   /* TAMANHO MOBILE */
+    height:100px;
+  }
 }
 </style>
 </head>
