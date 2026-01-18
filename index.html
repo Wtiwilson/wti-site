@@ -1,385 +1,733 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#05070B" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WTi | Tecnologia, infraestrutura e suprimentos</title>
+  <meta name="description" content="Soluções em TI, segurança, redes e suprimentos de informática industrial para empresas que não podem parar." />
 
-  <title>WTi – Soluções e Suporte em TI</title>
-  <meta name="description" content="Tecnologia, infraestrutura e suprimentos para empresas que não podem parar. Redes, segurança, informática industrial e e-mail corporativo." />
+  <link rel="icon" href="ativos/favicon.png" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="WTi – Soluções e Suporte em TI" />
-  <meta property="og:description" content="Infraestrutura, segurança, informática industrial e e-mail corporativo para indústrias e empresas." />
-  <meta property="og:type" content="website" />
+  <style>
+    :root{
+      --bg:#070b10;
+      --panel: rgba(255,255,255,.04);
+      --panel2: rgba(255,255,255,.03);
+      --border: rgba(255,255,255,.10);
+      --txt:#e9f0ff;
+      --muted: rgba(233,240,255,.70);
 
-  <link rel="preload" href="assets/css/styles.css" as="style" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+      --green:#19e3a1;
+      --cyan:#00c2ff;
+      --blue:#1a78ff;
+
+      --shadow: 0 30px 70px rgba(0,0,0,.55);
+      --blur: 18px;
+      --radius: 18px;
+      --radius2: 26px;
+
+      --max: 1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 800px at 60% -10%, rgba(0,194,255,.20), transparent 55%),
+                  radial-gradient(900px 700px at 10% 20%, rgba(25,227,161,.16), transparent 55%),
+                  radial-gradient(1200px 900px at 80% 70%, rgba(26,120,255,.14), transparent 60%),
+                  var(--bg);
+      color: var(--txt);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* NAV */
+    .nav{
+      position:fixed; inset:0 0 auto 0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(7,11,16,.75), rgba(7,11,16,.35));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav .inner{
+      height:72px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:160px;
+    }
+    .brand img{width:40px; height:40px}
+    .brand b{letter-spacing:.2px}
+    .menu{
+      display:flex; align-items:center; gap:20px;
+      color: rgba(233,240,255,.82);
+      font-weight:600;
+      font-size:14px;
+    }
+    .menu a{opacity:.85}
+    .menu a:hover{opacity:1}
+    .cta-wa{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(25,227,161,.95), rgba(25,227,161,.70));
+      color:#03120c;
+      font-weight:800;
+      box-shadow: 0 18px 40px rgba(25,227,161,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      white-space:nowrap;
+    }
+    .cta-wa img{width:18px; height:18px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.25))}
+    .hamb{display:none}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding: 130px 0 70px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(to bottom, rgba(7,11,16,.55), rgba(7,11,16,.90)),
+        url("ativos/hero6-wti.jpg") center/cover no-repeat;
+      opacity: .95;
+      z-index:-2;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(1000px 700px at 50% 15%, rgba(0,194,255,.22), transparent 60%),
+        radial-gradient(900px 700px at 20% 40%, rgba(25,227,161,.16), transparent 60%),
+        radial-gradient(1000px 800px at 80% 55%, rgba(26,120,255,.14), transparent 62%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items:center;
+    }
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: rgba(233,240,255,.85);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.3px;
+    }
+    .kdot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(180deg, var(--green), var(--cyan));
+      box-shadow: 0 0 0 6px rgba(25,227,161,.12);
+    }
+
+    h1{
+      margin: 16px 0 14px;
+      font-size: clamp(38px, 5.2vw, 66px);
+      line-height:1.02;
+      letter-spacing:-.8px;
+    }
+    .grad1{background: linear-gradient(90deg, var(--green), var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .grad2{background: linear-gradient(90deg, var(--cyan), var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+    .sub{
+      color: var(--muted);
+      font-size: 16px;
+      line-height:1.6;
+      max-width: 58ch;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(233,240,255,.92);
+      transition:.18s ease;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(25,227,161,.95), rgba(0,194,255,.78));
+      color:#061410;
+      box-shadow: 0 22px 50px rgba(0,194,255,.16);
+    }
+    .btn.primary:hover{filter: brightness(1.02)}
+    .btn .arr{font-weight:900; opacity:.9}
+
+    .hero-right{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(var(--blur));
+    }
+    .mini{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .mini .box{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+    }
+    .mini .box b{display:block; font-size:16px; margin-bottom:6px}
+    .mini .box span{color: var(--muted); font-size:13px; line-height:1.4}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(0,194,255,.25);
+      background: rgba(0,194,255,.06);
+      color: rgba(233,240,255,.86);
+      font-weight:700;
+      font-size:13px;
+    }
+    .pulse{
+      width:10px; height:10px; border-radius:99px;
+      background: var(--cyan);
+      box-shadow: 0 0 0 0 rgba(0,194,255,.40);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow: 0 0 0 0 rgba(0,194,255,.40)}
+      70%{box-shadow: 0 0 0 12px rgba(0,194,255,0)}
+      100%{box-shadow: 0 0 0 0 rgba(0,194,255,0)}
+    }
+
+    /* STATS */
+    .stats{
+      margin-top: 36px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      text-align:center;
+    }
+    .stat b{
+      display:block;
+      font-size: 34px;
+      letter-spacing:-.5px;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      margin-bottom:6px;
+    }
+    .stat span{color: rgba(233,240,255,.62); font-size:13px}
+
+    /* SECTIONS */
+    section{padding: 66px 0}
+    .sec-title{
+      font-size: clamp(30px, 4vw, 50px);
+      letter-spacing:-.6px;
+      margin: 0 0 10px;
+    }
+    .sec-desc{color: var(--muted); max-width:72ch; line-height:1.65; margin:0 0 26px}
+    .label{
+      display:inline-flex; align-items:center; gap:10px;
+      color: rgba(25,227,161,.95);
+      font-weight:800;
+      letter-spacing:.25px;
+      font-size:12px;
+      text-transform:uppercase;
+      margin-bottom: 10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      backdrop-filter: blur(var(--blur));
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      padding: 18px;
+      min-height: 290px;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(800px 300px at 30% 0%, rgba(0,194,255,.12), transparent 55%),
+        radial-gradient(800px 300px at 70% 100%, rgba(25,227,161,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .card .num{
+      position:absolute; top:14px; right:16px;
+      font-size: 54px;
+      font-weight:900;
+      color: rgba(255,255,255,.04);
+      letter-spacing:-1px;
+    }
+    .card .icon{
+      width:52px; height:52px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom: 14px;
+    }
+    .card h3{margin: 4px 0 8px; font-size: 24px}
+    .card p{margin:0 0 14px; color: var(--muted); line-height:1.55; font-size:14px}
+
+    .bullets{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: rgba(233,240,255,.82);
+      font-size:14px;
+    }
+    .dot{
+      width:7px; height:7px; border-radius:99px;
+      margin-top:7px;
+      background: linear-gradient(180deg, var(--cyan), var(--green));
+      box-shadow: 0 0 0 6px rgba(0,194,255,.07);
+      flex: 0 0 7px;
+    }
+
+    .wide{
+      margin-top: 16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(25,227,161,.20);
+      background: linear-gradient(180deg, rgba(25,227,161,.06), rgba(255,255,255,.02));
+      padding: 22px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .wide h3{margin:0; font-size:28px}
+    .wide p{margin:4px 0 0; color: var(--muted); line-height:1.55}
+
+    /* Services grid (2x2) */
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    .tile{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding: 18px;
+      min-height: 160px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(var(--blur));
+    }
+    .tile::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 260px at 25% 0%, rgba(0,194,255,.10), transparent 55%),
+        radial-gradient(700px 260px at 75% 100%, rgba(25,227,161,.08), transparent 55%);
+      pointer-events:none;
+    }
+    .tile h4{margin: 0 0 8px; font-size: 18px}
+    .tile p{margin:0; color: var(--muted); line-height:1.55; font-size:14px}
+
+    /* Email section */
+    .email{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:center;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      position:relative;
+      overflow:hidden;
+    }
+    .email::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 350px at 10% 10%, rgba(26,120,255,.12), transparent 55%),
+        radial-gradient(900px 350px at 90% 90%, rgba(25,227,161,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .pill{
+      display:flex; align-items:center; gap:10px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 12px;
+    }
+    .pill b{font-size:14px}
+    .pill span{color: var(--muted); font-size:12px}
+
+    /* Bottom CTA */
+    .final{
+      padding-bottom: 110px;
+    }
+    .final-box{
+      border-radius: 26px;
+      border:1px solid rgba(25,227,161,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      padding: 34px 18px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .final-box::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 360px at 50% 0%, rgba(0,194,255,.18), transparent 60%),
+        radial-gradient(900px 360px at 50% 100%, rgba(25,227,161,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .final-box h2{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      letter-spacing:-.6px;
+    }
+    .final-box p{margin:0 0 18px; color: var(--muted); line-height:1.6}
+    .fine{
+      display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+      color: rgba(233,240,255,.65);
+      font-size: 13px;
+      margin-top: 14px;
+    }
+    .fine i{
+      width:6px; height:6px; border-radius:99px;
+      background: var(--green);
+      display:inline-block;
+      margin-right:8px;
+      box-shadow: 0 0 0 6px rgba(25,227,161,.08);
+    }
+
+    /* Whats floating */
+    .wa-float{
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(25,227,161,.95), rgba(25,227,161,.70));
+      box-shadow: 0 18px 45px rgba(25,227,161,.22);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .wa-float img{width:28px; height:28px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr}
+      .cards{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .email{grid-template-columns: 1fr}
+      .menu{display:none}
+      .hamb{display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;
+        border-radius: 14px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Ambient background (pure CSS) -->
-  <div class="ambient" aria-hidden="true"></div>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="inner">
+        <a class="brand" href="#topo">
+          <img src="ativos/wti-logo.svg" alt="WTi" />
+          <b>WTi</b>
+        </a>
 
-  <!-- Header -->
-  <header class="header" id="top">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Ir para o início">
-        <img src="assets/img/wti-logo.svg" alt="WTi" class="brand__logo" />
-        <span class="brand__text">
-          <span class="brand__name">WTi</span>
-          <span class="brand__tag">Soluções e Suporte em TI</span>
-        </span>
-      </a>
+        <nav class="menu" aria-label="Navegação">
+          <a href="#solucoes">Soluções</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#infra">Infraestrutura</a>
+          <a href="#email">E-mail</a>
+          <a href="#contato">Contato</a>
+        </nav>
 
-      <nav class="nav" aria-label="Menu principal">
-        <button class="nav__toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-          <span class="nav__bars" aria-hidden="true"></span>
-        </button>
-
-        <ul class="nav__list" id="navList">
-          <li><a href="#solucoes">Soluções</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#infraestrutura">Infraestrutura</a></li>
-          <li><a href="#email">E-mail</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-
-        <a class="btn btn--whatsapp"
-           href="https://wa.me/5594984450738"
-           target="_blank" rel="noopener"
-           aria-label="Falar no WhatsApp">
+        <a class="cta-wa" href="#contato">
+          <img src="ativos/whatsapp-icone.svg" alt="" />
           WhatsApp
         </a>
-      </nav>
+
+        <button class="hamb" id="hamb" aria-label="Abrir menu">≡</button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy reveal">
-          <p class="kicker">Tecnologia aplicada. Operação estável. Suporte que responde.</p>
-          <h1>Tecnologia, infraestrutura e suprimentos para empresas que não podem parar.</h1>
-          <p class="lead">
-            Soluções em TI, segurança, redes e suprimentos de informática industrial, com foco em
-            indústrias alimentícias, distribuidores e pequenos negócios.
+  <!-- HERO -->
+  <main id="topo" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span class="kdot"></span> Soluções para empresas em operação contínua</div>
+
+          <h1>
+            Tecnologia, infraestrutura e<br/>
+            suprimentos para empresas <span class="grad1">que não podem</span><br/>
+            <span class="grad2">parar.</span>
+          </h1>
+
+          <p class="sub">
+            Soluções em TI, segurança, redes e suprimentos de informática industrial,
+            com foco em <b>indústrias alimentícias</b>, distribuidores e pequenos negócios.
           </p>
 
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#contato">Solicitar cotação</a>
-            <a class="btn btn--ghost" href="#solucoes">Ver soluções</a>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contato">Solicitar cotação <span class="arr">→</span></a>
+            <a class="btn" href="#solucoes">Ver soluções</a>
           </div>
 
-          <div class="hero__stats">
+          <div class="stats">
             <div class="stat">
-              <span class="stat__num">Ambiente</span>
-              <span class="stat__txt">Industrial & Corporativo</span>
-            </div>
-            <div class="stat">
-              <span class="stat__num">Foco</span>
-              <span class="stat__txt">Confiabilidade e continuidade</span>
+              <b>+500</b>
+              <span>Clientes atendidos</span>
             </div>
             <div class="stat">
-              <span class="stat__num">Entrega</span>
-              <span class="stat__txt">Projeto, execução e documentação</span>
+              <b>24/7</b>
+              <span>Suporte disponível</span>
+            </div>
+            <div class="stat">
+              <b>15+</b>
+              <span>Anos de experiência</span>
             </div>
           </div>
         </div>
 
-        <div class="hero__panel reveal" aria-hidden="true">
-          <div class="tech-card">
-            <div class="tech-card__glow"></div>
-
-            <div class="tech-card__top">
-              <span class="chip">WTi</span>
-              <span class="pulse"></span>
+        <aside class="hero-right" aria-label="Destaques">
+          <div class="mini">
+            <div class="box">
+              <b class="grad1">Help Desk</b>
+              <span>Atendimento remoto e presencial com agilidade.</span>
             </div>
-
-            <div class="tech-card__body">
-              <h3>Camada de Operação</h3>
-              <p>
-                Redes estáveis, segurança integrada, e infraestrutura pronta para chão de fábrica.
-              </p>
-
-              <div class="tech-list">
-                <div class="tech-item">
-                  <span class="dot"></span><span>Switching, Wi-Fi e Fibra</span>
-                </div>
-                <div class="tech-item">
-                  <span class="dot"></span><span>CFTV, acesso e monitoramento</span>
-                </div>
-                <div class="tech-item">
-                  <span class="dot"></span><span>Suprimentos industriais</span>
-                </div>
-              </div>
+            <div class="box">
+              <b class="grad2">Automação</b>
+              <span>Robôs, integrações e relatórios sob medida.</span>
             </div>
-
-            <div class="tech-card__lines" aria-hidden="true"></div>
+            <div class="box">
+              <b class="grad1">Segurança</b>
+              <span>CFTV, controle de acesso e monitoramento.</span>
+            </div>
+            <div class="box">
+              <b class="grad2">Infra</b>
+              <span>Redes, Wi-Fi e projetos documentados.</span>
+            </div>
           </div>
-        </div>
+
+          <div class="tag">
+            <span class="pulse"></span>
+            99,9% uptime nos serviços críticos
+          </div>
+        </aside>
       </div>
-
-      <div class="hero__circuit" aria-hidden="true"></div>
-    </section>
-
-    <!-- Soluções -->
-    <section class="section" id="solucoes">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2>Linhas de Soluções</h2>
-          <p>Estrutura robusta para operar no ritmo do seu negócio, sem susto e sem improviso.</p>
-        </div>
-
-        <div class="solution-grid">
-          <!-- Linha 1 -->
-          <article class="solution-card reveal">
-            <div class="solution-card__media" style="background-image:url('assets/img/industrial.jpg');"></div>
-            <div class="solution-card__content">
-              <div class="solution-card__label">Linha 1</div>
-              <h3>Informática Industrial</h3>
-              <ul class="bullets">
-                <li>Suprimentos e peças industriais</li>
-                <li>Impressoras térmicas e componentes</li>
-                <li>Computação para ambiente produtivo</li>
-              </ul>
-              <div class="solution-card__meta">
-                <span class="tag">Chão de fábrica</span>
-                <span class="tag">Alta demanda</span>
-                <span class="tag">Reposição rápida</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Linha 2 -->
-          <article class="solution-card solution-card--offset reveal">
-            <div class="solution-card__media" style="background-image:url('assets/img/security.jpg');"></div>
-            <div class="solution-card__content">
-              <div class="solution-card__label">Linha 2</div>
-              <h3>Segurança</h3>
-              <ul class="bullets">
-                <li>CFTV, alarmes e controle de acesso</li>
-                <li>Cercas elétricas e monitoramento</li>
-                <li>Implantação e suporte técnico</li>
-              </ul>
-              <div class="solution-card__meta">
-                <span class="tag">Perímetro</span>
-                <span class="tag">Acesso controlado</span>
-                <span class="tag">Monitoramento</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Linha 3 -->
-          <article class="solution-card reveal" id="infraestrutura">
-            <div class="solution-card__media" style="background-image:url('assets/img/infra.jpg');"></div>
-            <div class="solution-card__content">
-              <div class="solution-card__label">Linha 3</div>
-              <h3>Infraestrutura</h3>
-              <ul class="bullets">
-                <li>Switches, Wi-Fi e fibra óptica</li>
-                <li>Redes corporativas e industriais</li>
-                <li>Projetos, execução e documentação</li>
-              </ul>
-              <div class="solution-card__meta">
-                <span class="tag">Projeto</span>
-                <span class="tag">Execução</span>
-                <span class="tag">Documentação</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Serviços -->
-    <section class="section section--alt" id="servicos">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2>Serviços de TI</h2>
-          <p>Menos tarefas manuais, mais operação rodando. Simples, objetivo e bem feito.</p>
-        </div>
-
-        <div class="cards-3">
-          <article class="mini-card reveal">
-            <h3>Suporte & Help Desk</h3>
-            <p>Atendimento remoto e presencial para manter usuários, sistemas e rede funcionando.</p>
-            <ul class="mini-bullets">
-              <li>Rotina preventiva e correções</li>
-              <li>Padronização e boas práticas</li>
-              <li>Atendimento com rastreabilidade</li>
-            </ul>
-          </article>
-
-          <article class="mini-card mini-card--accent reveal">
-            <h3>Automação e Integrações</h3>
-            <p>Conecte sistemas, reduza retrabalho e evite erros operacionais com fluxos inteligentes.</p>
-            <ul class="mini-bullets">
-              <li>Integrações e rotinas automatizadas</li>
-              <li>Notificações e relatórios</li>
-              <li>Padronização de processos</li>
-            </ul>
-          </article>
-
-          <article class="mini-card reveal">
-            <h3>Vendas e Fornecimento</h3>
-            <p>Equipamentos e suprimentos certos para o ambiente certo. Sem apostas, sem “serve qualquer um”.</p>
-            <ul class="mini-bullets">
-              <li>Equipamentos corporativos</li>
-              <li>Suprimentos industriais</li>
-              <li>Recomendação técnica</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Email -->
-    <section class="section" id="email">
-      <div class="container">
-        <div class="split">
-          <div class="split__left reveal">
-            <h2>Hospedagem de E-mail Corporativo</h2>
-            <p>
-              E-mail profissional com migração assistida, antispam e acesso em qualquer dispositivo.
-              Sem “gambiarras”, sem perder histórico.
-            </p>
-
-            <div class="feature-grid">
-              <div class="feature">
-                <h3>POP / IMAP</h3>
-                <p>Compatível com rotinas corporativas e sincronização estável.</p>
-              </div>
-              <div class="feature">
-                <h3>Migração</h3>
-                <p>Transferência organizada com foco em continuidade e integridade.</p>
-              </div>
-              <div class="feature">
-                <h3>Webmail</h3>
-                <p>RoundCube, AfterLogic e opções equivalentes conforme necessidade.</p>
-              </div>
-              <div class="feature">
-                <h3>Antispam</h3>
-                <p>Proteção ativa contra spam e tentativas comuns de fraude.</p>
-              </div>
-              <div class="feature">
-                <h3>Clientes</h3>
-                <p>Outlook, Thunderbird e navegador, com suporte de configuração.</p>
-              </div>
-              <div class="feature">
-                <h3>Gestão</h3>
-                <p>Criação de contas, grupos e ajustes conforme seu domínio.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="split__right reveal" aria-hidden="true">
-            <div class="mail-panel">
-              <div class="mail-panel__top">
-                <span class="chip chip--green">E-mail</span>
-                <span class="chip">Antispam</span>
-                <span class="chip">Migração</span>
-              </div>
-              <div class="mail-panel__body">
-                <div class="mail-line"></div>
-                <div class="mail-line mail-line--short"></div>
-                <div class="mail-line"></div>
-                <div class="mail-line mail-line--mid"></div>
-                <div class="mail-line"></div>
-                <div class="mail-line mail-line--short"></div>
-              </div>
-              <div class="mail-panel__foot">
-                <span class="status">
-                  <span class="status__dot"></span> Operação estável
-                </span>
-                <span class="status status--muted">IMAP/POP/Webmail</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <div class="container cta__inner reveal">
-        <div class="cta__copy">
-          <h2>Vamos conversar?</h2>
-          <p>Explique seu cenário e retornamos com a solução certa.</p>
-        </div>
-
-        <a class="btn btn--primary btn--big"
-           href="https://wa.me/5594984450738"
-           target="_blank" rel="noopener">
-          Falar no WhatsApp
-        </a>
-      </div>
-    </section>
-
-    <!-- Contato -->
-    <section class="section section--alt" id="contato">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2>Contato</h2>
-          <p>Direto ao ponto, sem formulário que vai para o limbo.</p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-card reveal">
-            <h3>WhatsApp</h3>
-            <p>Resposta rápida para orçamento, dúvidas e suporte.</p>
-            <a class="contact-link" href="https://wa.me/5594984450738" target="_blank" rel="noopener">
-              +55 94 98445-0738
-            </a>
-          </div>
-
-          <div class="contact-card reveal">
-            <h3>E-mail</h3>
-            <p>Para solicitações formais e demandas com mais detalhes.</p>
-            <a class="contact-link" href="mailto:contato@wti.com.br">contato@wti.com.br</a>
-            <span class="hint">Troque para o e-mail real do seu domínio.</span>
-          </div>
-
-          <div class="contact-card contact-card--edge reveal">
-            <h3>Atuação</h3>
-            <p>Indústrias alimentícias, distribuidores e pequenos/médios negócios.</p>
-            <div class="pill-row">
-              <span class="pill">Infra</span>
-              <span class="pill">Segurança</span>
-              <span class="pill">Industrial</span>
-              <span class="pill">E-mail</span>
-            </div>
-          </div>
-        </div>
-
-        <footer class="footer">
-          <div class="footer__left">
-            <span class="footbrand">WTi</span>
-            <span class="footmuted">Soluções e Suporte em TI</span>
-          </div>
-          <div class="footer__right">
-            <a href="#top">Voltar ao topo</a>
-            <span class="sep">•</span>
-            <span class="footmuted">© <span id="year"></span> WTi</span>
-          </div>
-        </footer>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <!-- Floating WhatsApp (SVG icon, no green circle background) -->
-  <a class="wa-float"
-     href="https://wa.me/5594984450738"
-     target="_blank" rel="noopener"
-     aria-label="Abrir conversa no WhatsApp">
-    <!-- WhatsApp SVG -->
-    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-      <path d="M19.11 17.18c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.16-.43-2.2-1.37-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.52-.45-.45-.61-.45h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.97 2.63 1.11 2.81c.14.18 1.9 2.9 4.6 4.06.64.28 1.14.45 1.53.57.64.2 1.22.17 1.68.1.51-.08 1.6-.65 1.82-1.27.22-.62.22-1.15.16-1.27-.07-.12-.25-.2-.52-.34z"/>
-      <path d="M26.73 5.28A12.67 12.67 0 0016.03 0C9.06 0 3.4 5.65 3.4 12.62c0 2.23.58 4.4 1.69 6.32L3.29 32l13.33-1.74a12.56 12.56 0 006.01-1.52c6.35-3.57 8.61-11.6 5.1-17.98zM16.03 28.1c-1.88 0-3.73-.5-5.35-1.44l-.38-.22-7.91 1.03 1.06-7.71-.25-.4a11.1 11.1 0 01-1.66-5.88c0-6.13 4.99-11.12 11.12-11.12 2.97 0 5.77 1.16 7.87 3.26a11.06 11.06 0 013.26 7.86c0 6.14-4.99 11.12-11.12 11.12z"/>
-    </svg>
+  <!-- SOLUÇÕES -->
+  <section id="solucoes">
+    <div class="wrap">
+      <div class="label">// Nossas soluções</div>
+      <h2 class="sec-title">Soluções completas para <span class="grad1">sua</span> <span class="grad2">operação</span></h2>
+      <p class="sec-desc">
+        Da infraestrutura básica à segurança avançada, fornecemos tudo que sua empresa precisa para operar com eficiência.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="num">01</div>
+          <div class="icon">🧠</div>
+          <h3>Informática Industrial</h3>
+          <p>Equipamentos e suprimentos para ambientes produtivos exigentes.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span> Suprimentos e peças industriais</li>
+            <li><span class="dot"></span> Impressoras térmicas e componentes</li>
+            <li><span class="dot"></span> Computação para ambiente produtivo</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="num">02</div>
+          <div class="icon">🛡️</div>
+          <h3>Segurança</h3>
+          <p>Proteção completa para seu patrimônio e operação.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span> CFTV, alarmes e controle de acesso</li>
+            <li><span class="dot"></span> Cercas elétricas e monitoramento</li>
+            <li><span class="dot"></span> Implantação e suporte técnico</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="num">03</div>
+          <div class="icon">🌐</div>
+          <h3>Infraestrutura</h3>
+          <p>Redes robustas e conectividade de alta performance.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span> Switches, Wi-Fi e fibra óptica</li>
+            <li><span class="dot"></span> Redes corporativas e industriais</li>
+            <li><span class="dot"></span> Projetos, execução e documentação</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="label">// Serviços de TI</div>
+      <h2 class="sec-title">Suporte completo para <span class="grad2">sua</span> <span class="grad1">equipe</span></h2>
+      <p class="sec-desc">
+        Do help desk à automação avançada, oferecemos serviços que liberam sua equipe para focar no que importa.
+      </p>
+
+      <div class="grid2">
+        <div class="tile">
+          <h4>Suporte & Help Desk</h4>
+          <p>Atendimento remoto e presencial para resolver problemas rapidamente e manter sua operação funcionando.</p>
+        </div>
+        <div class="tile">
+          <h4>Automação e Integrações</h4>
+          <p>Conectamos sistemas, automatizamos processos e eliminamos trabalho manual repetitivo.</p>
+        </div>
+        <div class="tile">
+          <h4>Relatórios e Robôs</h4>
+          <p>Desenvolvemos relatórios personalizados e robôs que executam tarefas automaticamente.</p>
+        </div>
+        <div class="tile">
+          <h4>Vendas e Fornecimento</h4>
+          <p>Equipamentos, peças e suprimentos de informática com consultoria especializada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL -->
+  <section id="email">
+    <div class="wrap">
+      <div class="label">// E-mail corporativo</div>
+
+      <div class="email">
+        <div>
+          <h2 class="sec-title">Hospedagem de <span class="grad2">E-mail</span> <span class="grad1">Corporativo</span></h2>
+          <p class="sec-desc">
+            E-mail profissional para sua empresa com segurança, antispam e acesso de qualquer dispositivo.
+          </p>
+          <a class="btn primary" href="#contato">Contratar e-mail <span class="arr">→</span></a>
+        </div>
+
+        <div>
+          <div class="pill"><b>POP / IMAP</b> <span>Compatível com clientes e dispositivos</span></div>
+          <div class="pill"><b>Migração de e-mails</b> <span>Transição organizada e segura</span></div>
+          <div class="pill"><b>Webmail</b> <span>RoundCube, AfterLogic</span></div>
+          <div class="pill"><b>Antispam profissional</b> <span>Filtro avançado e proteção</span></div>
+          <div class="pill"><b>Outlook / Thunderbird / Navegador</b> <span>Configuração e suporte</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="final">
+    <div class="wrap">
+      <div class="final-box">
+        <h2>Vamos <span class="grad1">conversar</span>?</h2>
+        <p>Explique seu cenário e retornamos com a solução certa para sua empresa.</p>
+
+        <!-- TROQUE O NÚMERO NO LINK ABAIXO -->
+        <a class="btn primary" id="btnWhats" href="https://wa.me/5599999999999?text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20com%20a%20WTi." target="_blank" rel="noopener">
+          <img src="ativos/whatsapp-icone.svg" alt="" style="width:18px;height:18px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.25))" />
+          Falar no WhatsApp <span class="arr">→</span>
+        </a>
+
+        <div class="fine">
+          <span><i></i>Resposta rápida</span>
+          <span><i></i>Sem compromisso</span>
+          <span><i></i>Consultoria gratuita</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Whats flutuante -->
+  <a class="wa-float" href="https://wa.me/5599999999999?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20WTi." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <img src="ativos/whatsapp-icone.svg" alt="" />
   </a>
 
-  <script src="assets/js/script.js" defer></script>
+  <script>
+    // menu mobile simples (porque humanos gostam de clicar em 3 risquinhos)
+    const hamb = document.getElementById('hamb');
+    const menuLinks = ['#solucoes','#servicos','#infra','#email','#contato'];
+
+    if (hamb) {
+      hamb.addEventListener('click', () => {
+        const exists = document.getElementById('mobileMenu');
+        if (exists) { exists.remove(); return; }
+
+        const m = document.createElement('div');
+        m.id = 'mobileMenu';
+        m.style.position = 'fixed';
+        m.style.left = '18px';
+        m.style.right = '18px';
+        m.style.top = '86px';
+        m.style.zIndex = '80';
+        m.style.border = '1px solid rgba(255,255,255,.10)';
+        m.style.background = 'rgba(7,11,16,.92)';
+        m.style.backdropFilter = 'blur(14px)';
+        m.style.borderRadius = '18px';
+        m.style.padding = '12px';
+        m.style.boxShadow = '0 22px 70px rgba(0,0,0,.55)';
+
+        menuLinks.forEach(href => {
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = href.replace('#','').toUpperCase();
+          a.style.display = 'block';
+          a.style.padding = '12px';
+          a.style.borderRadius = '14px';
+          a.style.fontWeight = '800';
+          a.style.color = 'rgba(233,240,255,.90)';
+          a.addEventListener('click', () => m.remove());
+          a.addEventListener('mouseover', () => a.style.background = 'rgba(255,255,255,.05)');
+          a.addEventListener('mouseout', () => a.style.background = 'transparent');
+          m.appendChild(a);
+        });
+
+        document.body.appendChild(m);
+      });
+    }
+  </script>
 </body>
 </html>
