@@ -6,7 +6,7 @@
   <title>WTi | Tecnologia, infraestrutura e suprimentos</title>
   <meta name="description" content="Soluções em TI, segurança, redes e suprimentos de informática industrial para empresas que não podem parar." />
 
-  <link rel="icon" href="./ativos/favicon.png" />
+  <link rel="icon" href="ativos/favicon.png" />
 
   <style>
     :root{
@@ -33,204 +33,701 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 800px at 60% -10%, rgba(0,194,255,.20), transparent 55%),
-        radial-gradient(900px 700px at 10% 20%, rgba(25,227,161,.16), transparent 55%),
-        radial-gradient(1200px 900px at 80% 70%, rgba(26,120,255,.14), transparent 60%),
-        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 800px at 60% -10%, rgba(0,194,255,.20), transparent 55%),
+                  radial-gradient(900px 700px at 10% 20%, rgba(25,227,161,.16), transparent 55%),
+                  radial-gradient(1200px 900px at 80% 70%, rgba(26,120,255,.14), transparent 60%),
+                  var(--bg);
       color: var(--txt);
       overflow-x:hidden;
     }
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
 
     /* NAV */
     .nav{
-      position:fixed;inset:0 0 auto 0;z-index:50;
+      position:fixed; inset:0 0 auto 0;
+      z-index:50;
       backdrop-filter: blur(14px);
       background: linear-gradient(to bottom, rgba(7,11,16,.75), rgba(7,11,16,.35));
-      border-bottom:1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav .inner{
       height:72px;
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px;
     }
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:40px;height:40px}
-    .menu{display:flex;gap:20px;font-size:14px;font-weight:600}
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:160px;
+    }
+    .brand img{width:40px; height:40px}
+    .brand b{letter-spacing:.2px}
+    .menu{
+      display:flex; align-items:center; gap:20px;
+      color: rgba(233,240,255,.82);
+      font-weight:600;
+      font-size:14px;
+    }
+    .menu a{opacity:.85}
+    .menu a:hover{opacity:1}
     .cta-wa{
-      display:flex;align-items:center;gap:10px;
-      padding:12px 16px;border-radius:14px;
-      background:linear-gradient(135deg,#19e3a1,#00c2ff);
-      color:#03120c;font-weight:800;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(25,227,161,.95), rgba(25,227,161,.70));
+      color:#03120c;
+      font-weight:800;
+      box-shadow: 0 18px 40px rgba(25,227,161,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      white-space:nowrap;
     }
+    .cta-wa img{width:18px; height:18px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.25))}
+    .hamb{display:none}
 
     /* HERO */
     .hero{
-      padding:130px 0 80px;
+      position:relative;
+      padding: 130px 0 70px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
       background:
         linear-gradient(to bottom, rgba(7,11,16,.55), rgba(7,11,16,.90)),
-        url("./ativos/hero6-wti.jpg") center/cover no-repeat;
+        url("ativos/hero6-wti.jpg") center/cover no-repeat;
+      opacity: .95;
+      z-index:-2;
     }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(1000px 700px at 50% 15%, rgba(0,194,255,.22), transparent 60%),
+        radial-gradient(900px 700px at 20% 40%, rgba(25,227,161,.16), transparent 60%),
+        radial-gradient(1000px 800px at 80% 55%, rgba(26,120,255,.14), transparent 62%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items:center;
+    }
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: rgba(233,240,255,.85);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.3px;
+    }
+    .kdot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(180deg, var(--green), var(--cyan));
+      box-shadow: 0 0 0 6px rgba(25,227,161,.12);
+    }
+
     h1{
-      font-size:clamp(38px,5vw,64px);
-      line-height:1.05;
-      margin:16px 0;
+      margin: 16px 0 14px;
+      font-size: clamp(38px, 5.2vw, 66px);
+      line-height:1.02;
+      letter-spacing:-.8px;
     }
-    .grad1{background:linear-gradient(90deg,#19e3a1,#00c2ff);-webkit-background-clip:text;color:transparent}
-    .grad2{background:linear-gradient(90deg,#00c2ff,#1a78ff);-webkit-background-clip:text;color:transparent}
-    .sub{color:var(--muted);max-width:60ch;margin-bottom:24px}
+    .grad1{background: linear-gradient(90deg, var(--green), var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .grad2{background: linear-gradient(90deg, var(--cyan), var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
 
+    .sub{
+      color: var(--muted);
+      font-size: 16px;
+      line-height:1.6;
+      max-width: 58ch;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(233,240,255,.92);
+      transition:.18s ease;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(25,227,161,.95), rgba(0,194,255,.78));
+      color:#061410;
+      box-shadow: 0 22px 50px rgba(0,194,255,.16);
+    }
+    .btn.primary:hover{filter: brightness(1.02)}
+    .btn .arr{font-weight:900; opacity:.9}
+
+    .hero-right{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(var(--blur));
+    }
+    .mini{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .mini .box{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+    }
+    .mini .box b{display:block; font-size:16px; margin-bottom:6px}
+    .mini .box span{color: var(--muted); font-size:13px; line-height:1.4}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(0,194,255,.25);
+      background: rgba(0,194,255,.06);
+      color: rgba(233,240,255,.86);
+      font-weight:700;
+      font-size:13px;
+    }
+    .pulse{
+      width:10px; height:10px; border-radius:99px;
+      background: var(--cyan);
+      box-shadow: 0 0 0 0 rgba(0,194,255,.40);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow: 0 0 0 0 rgba(0,194,255,.40)}
+      70%{box-shadow: 0 0 0 12px rgba(0,194,255,0)}
+      100%{box-shadow: 0 0 0 0 rgba(0,194,255,0)}
+    }
+
+    /* STATS */
     .stats{
-      display:grid;grid-template-columns:repeat(3,1fr);
-      gap:20px;margin-top:32px;text-align:center
+      margin-top: 36px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      text-align:center;
     }
-    .stat b{font-size:34px;color:#00c2ff}
+    .stat b{
+      display:block;
+      font-size: 34px;
+      letter-spacing:-.5px;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      margin-bottom:6px;
+    }
+    .stat span{color: rgba(233,240,255,.62); font-size:13px}
 
-    section{padding:70px 0}
+    /* SECTIONS */
+    section{padding: 66px 0}
+    .sec-title{
+      font-size: clamp(30px, 4vw, 50px);
+      letter-spacing:-.6px;
+      margin: 0 0 10px;
+    }
+    .sec-desc{color: var(--muted); max-width:72ch; line-height:1.65; margin:0 0 26px}
+    .label{
+      display:inline-flex; align-items:center; gap:10px;
+      color: rgba(25,227,161,.95);
+      font-weight:800;
+      letter-spacing:.25px;
+      font-size:12px;
+      text-transform:uppercase;
+      margin-bottom: 10px;
+    }
 
     .cards{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
     .card{
-      background:rgba(255,255,255,.04);
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      backdrop-filter: blur(var(--blur));
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      padding: 18px;
+      min-height: 290px;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(800px 300px at 30% 0%, rgba(0,194,255,.12), transparent 55%),
+        radial-gradient(800px 300px at 70% 100%, rgba(25,227,161,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .card .num{
+      position:absolute; top:14px; right:16px;
+      font-size: 54px;
+      font-weight:900;
+      color: rgba(255,255,255,.04);
+      letter-spacing:-1px;
+    }
+    .card .icon{
+      width:52px; height:52px;
+      border-radius: 14px;
       border:1px solid rgba(255,255,255,.10);
-      border-radius:26px;
-      padding:22px;
+      background: rgba(255,255,255,.03);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom: 14px;
+    }
+    .card h3{margin: 4px 0 8px; font-size: 24px}
+    .card p{margin:0 0 14px; color: var(--muted); line-height:1.55; font-size:14px}
+
+    .bullets{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: rgba(233,240,255,.82);
+      font-size:14px;
+    }
+    .dot{
+      width:7px; height:7px; border-radius:99px;
+      margin-top:7px;
+      background: linear-gradient(180deg, var(--cyan), var(--green));
+      box-shadow: 0 0 0 6px rgba(0,194,255,.07);
+      flex: 0 0 7px;
     }
 
+    .wide{
+      margin-top: 16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(25,227,161,.20);
+      background: linear-gradient(180deg, rgba(25,227,161,.06), rgba(255,255,255,.02));
+      padding: 22px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .wide h3{margin:0; font-size:28px}
+    .wide p{margin:4px 0 0; color: var(--muted); line-height:1.55}
+
+    /* Services grid (2x2) */
     .grid2{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
     }
+    .tile{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding: 18px;
+      min-height: 160px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(var(--blur));
+    }
+    .tile::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 260px at 25% 0%, rgba(0,194,255,.10), transparent 55%),
+        radial-gradient(700px 260px at 75% 100%, rgba(25,227,161,.08), transparent 55%);
+      pointer-events:none;
+    }
+    .tile h4{margin: 0 0 8px; font-size: 18px}
+    .tile p{margin:0; color: var(--muted); line-height:1.55; font-size:14px}
 
+    /* Email section */
     .email{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-      background:rgba(255,255,255,.04);
-      border-radius:26px;
-      padding:26px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:center;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      position:relative;
+      overflow:hidden;
     }
+    .email::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 350px at 10% 10%, rgba(26,120,255,.12), transparent 55%),
+        radial-gradient(900px 350px at 90% 90%, rgba(25,227,161,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .pill{
+      display:flex; align-items:center; gap:10px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 12px;
+    }
+    .pill b{font-size:14px}
+    .pill span{color: var(--muted); font-size:12px}
 
+    /* Bottom CTA */
+    .final{
+      padding-bottom: 110px;
+    }
     .final-box{
-      background:rgba(255,255,255,.04);
-      border-radius:26px;
-      padding:40px 20px;
+      border-radius: 26px;
+      border:1px solid rgba(25,227,161,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      padding: 34px 18px;
       text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .final-box::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 360px at 50% 0%, rgba(0,194,255,.18), transparent 60%),
+        radial-gradient(900px 360px at 50% 100%, rgba(25,227,161,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .final-box h2{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      letter-spacing:-.6px;
+    }
+    .final-box p{margin:0 0 18px; color: var(--muted); line-height:1.6}
+    .fine{
+      display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+      color: rgba(233,240,255,.65);
+      font-size: 13px;
+      margin-top: 14px;
+    }
+    .fine i{
+      width:6px; height:6px; border-radius:99px;
+      background: var(--green);
+      display:inline-block;
+      margin-right:8px;
+      box-shadow: 0 0 0 6px rgba(25,227,161,.08);
     }
 
+    /* Whats floating */
     .wa-float{
-      position:fixed;right:18px;bottom:18px;
-      width:58px;height:58px;border-radius:18px;
-      background:#19e3a1;
-      display:flex;align-items:center;justify-content:center;
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(25,227,161,.95), rgba(25,227,161,.70));
+      box-shadow: 0 18px 45px rgba(25,227,161,.22);
+      display:flex; align-items:center; justify-content:center;
     }
+    .wa-float img{width:28px; height:28px}
 
-    @media(max-width:900px){
-      .cards,.grid2,.email,.stats{grid-template-columns:1fr}
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr}
+      .cards{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .email{grid-template-columns: 1fr}
       .menu{display:none}
+      .hamb{display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;
+        border-radius: 14px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)}
     }
   </style>
 </head>
 
 <body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="inner">
+        <a class="brand" href="#topo">
+          <img src="ativos/wti-logo.svg" alt="WTi" />
+          <b>WTi</b>
+        </a>
 
-<header class="nav">
-  <div class="wrap inner">
-    <div class="brand">
-      <img src="./ativos/wti-logo.svg" alt="WTi">
-      <strong>WTi</strong>
-    </div>
-    <nav class="menu">
-      <a href="#solucoes">Soluções</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#email">E-mail</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <a class="cta-wa" href="#contato">
-      <img src="./ativos/whatsapp-icone.svg" width="18"> WhatsApp
-    </a>
-  </div>
-</header>
+        <nav class="menu" aria-label="Navegação">
+          <a href="#solucoes">Soluções</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#infra">Infraestrutura</a>
+          <a href="#email">E-mail</a>
+          <a href="#contato">Contato</a>
+        </nav>
 
-<main class="hero">
-  <div class="wrap">
-    <h1>
-      Tecnologia, infraestrutura e suprimentos para empresas
-      <span class="grad1">que não podem</span> <span class="grad2">parar.</span>
-    </h1>
-    <p class="sub">
-      Soluções em TI, segurança, redes e suprimentos de informática industrial.
-    </p>
+        <a class="cta-wa" href="#contato">
+          <img src="ativos/whatsapp-icone.svg" alt="" />
+          WhatsApp
+        </a>
 
-    <div class="stats">
-      <div class="stat"><b>+500</b><span>Clientes</span></div>
-      <div class="stat"><b>24/7</b><span>Suporte</span></div>
-      <div class="stat"><b>15+</b><span>Anos</span></div>
-    </div>
-  </div>
-</main>
-
-<section id="solucoes">
-  <div class="wrap">
-    <h2>Soluções completas</h2>
-    <div class="cards">
-      <div class="card">Informática Industrial</div>
-      <div class="card">Segurança</div>
-      <div class="card">Infraestrutura</div>
-    </div>
-  </div>
-</section>
-
-<section id="servicos">
-  <div class="wrap">
-    <h2>Serviços de TI</h2>
-    <div class="grid2">
-      <div class="card">Help Desk</div>
-      <div class="card">Automação</div>
-      <div class="card">Relatórios e Robôs</div>
-      <div class="card">Vendas e Suprimentos</div>
-    </div>
-  </div>
-</section>
-
-<section id="email">
-  <div class="wrap">
-    <div class="email">
-      <div>
-        <h2>E-mail Corporativo</h2>
-        <p>Hospedagem segura com antispam profissional.</p>
-      </div>
-      <div>
-        <p>POP / IMAP</p>
-        <p>Webmail</p>
-        <p>Migração</p>
-        <p>Antispam</p>
+        <button class="hamb" id="hamb" aria-label="Abrir menu">≡</button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="contato">
-  <div class="wrap">
-    <div class="final-box">
-      <h2>Vamos conversar?</h2>
-      <a class="cta-wa" href="https://wa.me/5599999999999" target="_blank">
-        <img src="./ativos/whatsapp-icone.svg" width="18"> Falar no WhatsApp
-      </a>
+  <!-- HERO -->
+  <main id="topo" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span class="kdot"></span> Soluções para empresas em operação contínua</div>
+
+          <h1>
+            Tecnologia, infraestrutura e<br/>
+            suprimentos para empresas <span class="grad1">que não podem</span><br/>
+            <span class="grad2">parar.</span>
+          </h1>
+
+          <p class="sub">
+            Soluções em TI, segurança, redes e suprimentos de informática industrial,
+            com foco em <b>indústrias alimentícias</b>, distribuidores e pequenos negócios.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contato">Solicitar cotação <span class="arr">→</span></a>
+            <a class="btn" href="#solucoes">Ver soluções</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <b>+500</b>
+              <span>Clientes atendidos</span>
+            </div>
+            <div class="stat">
+              <b>24/7</b>
+              <span>Suporte disponível</span>
+            </div>
+            <div class="stat">
+              <b>15+</b>
+              <span>Anos de experiência</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right" aria-label="Destaques">
+          <div class="mini">
+            <div class="box">
+              <b class="grad1">Help Desk</b>
+              <span>Atendimento remoto e presencial com agilidade.</span>
+            </div>
+            <div class="box">
+              <b class="grad2">Automação</b>
+              <span>Robôs, integrações e relatórios sob medida.</span>
+            </div>
+            <div class="box">
+              <b class="grad1">Segurança</b>
+              <span>CFTV, controle de acesso e monitoramento.</span>
+            </div>
+            <div class="box">
+              <b class="grad2">Infra</b>
+              <span>Redes, Wi-Fi e projetos documentados.</span>
+            </div>
+          </div>
+
+          <div class="tag">
+            <span class="pulse"></span>
+            99,9% uptime nos serviços críticos
+          </div>
+        </aside>
+      </div>
     </div>
-  </div>
-</section>
+  </main>
 
-<a class="wa-float" href="https://wa.me/5599999999999" target="_blank">
-  <img src="./ativos/whatsapp-icone.svg" width="28">
-</a>
+  <!-- SOLUÇÕES -->
+  <section id="solucoes">
+    <div class="wrap">
+      <div class="label">// Nossas soluções</div>
+      <h2 class="sec-title">Soluções completas para <span class="grad1">sua</span> <span class="grad2">operação</span></h2>
+      <p class="sec-desc">
+        Da infraestrutura básica à segurança avançada, fornecemos tudo que sua empresa precisa para operar com eficiência.
+      </p>
 
+      <div class="cards">
+        <article class="card">
+          <div class="num">01</div>
+          <div class="icon">🧠</div>
+          <h3>Informática Industrial</h3>
+          <p>Equipamentos e suprimentos para ambientes produtivos exigentes.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span> Suprimentos e peças industriais</li>
+            <li><span class="dot"></span> Impressoras térmicas e componentes</li>
+            <li><span class="dot"></span> Computação para ambiente produtivo</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="num">02</div>
+          <div class="icon">🛡️</div>
+          <h3>Segurança</h3>
+          <p>Proteção completa para seu patrimônio e operação.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span> CFTV, alarmes e controle de acesso</li>
+            <li><span class="dot"></span> Cercas elétricas e monitoramento</li>
+            <li><span class="dot"></span> Implantação e suporte técnico</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="num">03</div>
+          <div class="icon">🌐</div>
+          <h3>Infraestrutura</h3>
+          <p>Redes robustas e conectividade de alta performance.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span> Switches, Wi-Fi e fibra óptica</li>
+            <li><span class="dot"></span> Redes corporativas e industriais</li>
+            <li><span class="dot"></span> Projetos, execução e documentação</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="label">// Serviços de TI</div>
+      <h2 class="sec-title">Suporte completo para <span class="grad2">sua</span> <span class="grad1">equipe</span></h2>
+      <p class="sec-desc">
+        Do help desk à automação avançada, oferecemos serviços que liberam sua equipe para focar no que importa.
+      </p>
+
+      <div class="grid2">
+        <div class="tile">
+          <h4>Suporte & Help Desk</h4>
+          <p>Atendimento remoto e presencial para resolver problemas rapidamente e manter sua operação funcionando.</p>
+        </div>
+        <div class="tile">
+          <h4>Automação e Integrações</h4>
+          <p>Conectamos sistemas, automatizamos processos e eliminamos trabalho manual repetitivo.</p>
+        </div>
+        <div class="tile">
+          <h4>Relatórios e Robôs</h4>
+          <p>Desenvolvemos relatórios personalizados e robôs que executam tarefas automaticamente.</p>
+        </div>
+        <div class="tile">
+          <h4>Vendas e Fornecimento</h4>
+          <p>Equipamentos, peças e suprimentos de informática com consultoria especializada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL -->
+  <section id="email">
+    <div class="wrap">
+      <div class="label">// E-mail corporativo</div>
+
+      <div class="email">
+        <div>
+          <h2 class="sec-title">Hospedagem de <span class="grad2">E-mail</span> <span class="grad1">Corporativo</span></h2>
+          <p class="sec-desc">
+            E-mail profissional para sua empresa com segurança, antispam e acesso de qualquer dispositivo.
+          </p>
+          <a class="btn primary" href="#contato">Contratar e-mail <span class="arr">→</span></a>
+        </div>
+
+        <div>
+          <div class="pill"><b>POP / IMAP</b> <span>Compatível com clientes e dispositivos</span></div>
+          <div class="pill"><b>Migração de e-mails</b> <span>Transição organizada e segura</span></div>
+          <div class="pill"><b>Webmail</b> <span>RoundCube, AfterLogic</span></div>
+          <div class="pill"><b>Antispam profissional</b> <span>Filtro avançado e proteção</span></div>
+          <div class="pill"><b>Outlook / Thunderbird / Navegador</b> <span>Configuração e suporte</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="final">
+    <div class="wrap">
+      <div class="final-box">
+        <h2>Vamos <span class="grad1">conversar</span>?</h2>
+        <p>Explique seu cenário e retornamos com a solução certa para sua empresa.</p>
+
+        <!-- TROQUE O NÚMERO NO LINK ABAIXO -->
+        <a class="btn primary" id="btnWhats" href="https://wa.me/5599999999999?text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20com%20a%20WTi." target="_blank" rel="noopener">
+          <img src="ativos/whatsapp-icone.svg" alt="" style="width:18px;height:18px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.25))" />
+          Falar no WhatsApp <span class="arr">→</span>
+        </a>
+
+        <div class="fine">
+          <span><i></i>Resposta rápida</span>
+          <span><i></i>Sem compromisso</span>
+          <span><i></i>Consultoria gratuita</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Whats flutuante -->
+  <a class="wa-float" href="https://wa.me/5599999999999?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20WTi." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <img src="ativos/whatsapp-icone.svg" alt="" />
+  </a>
+
+  <script>
+    // menu mobile simples (porque humanos gostam de clicar em 3 risquinhos)
+    const hamb = document.getElementById('hamb');
+    const menuLinks = ['#solucoes','#servicos','#infra','#email','#contato'];
+
+    if (hamb) {
+      hamb.addEventListener('click', () => {
+        const exists = document.getElementById('mobileMenu');
+        if (exists) { exists.remove(); return; }
+
+        const m = document.createElement('div');
+        m.id = 'mobileMenu';
+        m.style.position = 'fixed';
+        m.style.left = '18px';
+        m.style.right = '18px';
+        m.style.top = '86px';
+        m.style.zIndex = '80';
+        m.style.border = '1px solid rgba(255,255,255,.10)';
+        m.style.background = 'rgba(7,11,16,.92)';
+        m.style.backdropFilter = 'blur(14px)';
+        m.style.borderRadius = '18px';
+        m.style.padding = '12px';
+        m.style.boxShadow = '0 22px 70px rgba(0,0,0,.55)';
+
+        menuLinks.forEach(href => {
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = href.replace('#','').toUpperCase();
+          a.style.display = 'block';
+          a.style.padding = '12px';
+          a.style.borderRadius = '14px';
+          a.style.fontWeight = '800';
+          a.style.color = 'rgba(233,240,255,.90)';
+          a.addEventListener('click', () => m.remove());
+          a.addEventListener('mouseover', () => a.style.background = 'rgba(255,255,255,.05)');
+          a.addEventListener('mouseout', () => a.style.background = 'transparent');
+          m.appendChild(a);
+        });
+
+        document.body.appendChild(m);
+      });
+    }
+  </script>
 </body>
 </html>
